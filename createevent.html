@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Event</title>
+
+    <link rel="stylesheet" href="./createevent.css">
+</head>
+
+<body>
+    <nav class="create-nav">
+
+    <h2>nairabox</h2>
+
+    <a href="./dashboard.html">
+
+        <button>
+            Back To Dashboard
+        </button>
+
+    </a>
+
+</nav>
+
+<section class="create-event">
+
+    <div class="event-container">
+
+        <div class="top">
+
+            <h1>Create New Event</h1>
+
+            <p>
+                Fill in the event details below
+            </p>
+
+        </div>
+
+
+
+        <form id="eventForm">
+
+            <!-- EVENT TITLE -->
+            <div class="input-group">
+
+                <label>Event Title</label>
+
+                <input 
+                    type="text" 
+                    id="eventTitle"
+                    placeholder="Enter event title"
+                >
+
+            </div>
+
+
+
+
+            <!-- CATEGORY -->
+            <div class="input-group">
+
+                <label>Category</label>
+
+                <input 
+                    type="text"
+                    id="eventCategory"
+                    placeholder="Music, Comedy, Tech..."
+                >
+
+            </div>
+
+
+
+
+            <!-- DESCRIPTION -->
+            <div class="input-group">
+
+                <label>Description</label>
+
+                <textarea 
+                    id="eventDescription"
+                    placeholder="Describe your event..."
+                ></textarea>
+
+            </div>
+
+
+
+
+            <!-- LOCATION -->
+            <div class="input-group">
+
+                <label>Location</label>
+
+                <input 
+                    type="text"
+                    id="eventLocation"
+                    placeholder="Event Location"
+                >
+
+            </div>
+
+
+
+
+            <!-- DATE & TIME -->
+            <div class="double-input">
+
+                <div class="input-group">
+
+                    <label>Event Date</label>
+
+                    <input 
+                        type="date"
+                        id="eventDate"
+                    >
+
+                </div>
+
+
+
+                <div class="input-group">
+
+                    <label>Event Time</label>
+
+                    <input 
+                        type="time"
+                        id="eventTime"
+                    >
+
+                </div>
+
+            </div>
+
+
+
+
+            <!-- TICKET PRICE -->
+            <div class="input-group">
+
+                <label>Ticket Price</label>
+
+                <input 
+                    type="number"
+                    id="ticketPrice"
+                    placeholder="Ticket Price"
+                >
+
+            </div>
+
+
+
+
+            <!-- IMAGE -->
+            <div class="input-group">
+
+                <label>Upload Event Flyer</label>
+
+                <input 
+                 type="text"
+                 id="eventImage"
+                 placeholder="Paste Event Image URL"
+>
+
+            </div>
+
+
+
+
+
+            <!-- BUTTON -->
+            <button id="publishBtn">
+
+                Publish Event
+
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<script type="module" src="./createevent.js"></script>
+
+</body>
+</html>

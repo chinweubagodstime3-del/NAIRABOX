@@ -1,0 +1,323 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    background: #f5f7fa;
+}
+
+
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.dashboard-nav{
+    width: 100%;
+
+    background: white;
+
+    padding: 20px 5%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.05);
+
+    position: sticky;
+    top: 0;
+
+    z-index: 100;
+}
+
+.logo h2{
+    color: #00a877;
+    font-size: 30px;
+}
+
+.nav-btns{
+    display: flex;
+    gap: 15px;
+}
+
+.nav-btns button{
+    padding: 12px 20px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    transition: 0.3s;
+}
+
+#allEventsBtn{
+    background: #eeeeee;
+}
+
+#allEventsBtn:hover{
+    background: #dddddd;
+}
+
+#logoutBtn{
+    background: crimson;
+    color: white;
+}
+
+#logoutBtn:hover{
+    background: rgb(185, 13, 48);
+}
+
+
+
+
+/* =========================
+   WELCOME SECTION
+========================= */
+
+.welcome-section{
+    width: 100%;
+
+    padding: 50px 5%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+}
+
+.welcome-left h1{
+    font-size: 45px;
+
+    margin-bottom: 10px;
+}
+
+.welcome-left p{
+    color: gray;
+    font-size: 18px;
+}
+
+#createEventBtn{
+    padding: 16px 25px;
+
+    border: none;
+
+    background: #00a877;
+
+    color: white;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+#createEventBtn:hover{
+    background: #008f66;
+}
+
+
+
+
+/* =========================
+   EVENTS SECTION
+========================= */
+
+.events-section{
+    width: 100%;
+
+    padding: 20px 5% 60px;
+}
+
+.events-header{
+    margin-bottom: 30px;
+}
+
+.events-header h2{
+    font-size: 32px;
+}
+
+
+
+
+/* =========================
+   EVENTS CONTAINER
+========================= */
+
+#eventsContainer{
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+    gap: 25px;
+}
+
+
+
+
+/* =========================
+   EVENT CARD
+========================= */
+
+.event-card{
+    background: white;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.08);
+
+    transition: 0.3s;
+
+    cursor: pointer;
+}
+
+.event-card:hover{
+    transform: translateY(-5px);
+}
+
+.event-image{
+    width: 100%;
+    height: 220px;
+
+    object-fit: cover;
+}
+
+.event-content{
+    padding: 20px;
+}
+
+.event-category{
+    display: inline-block;
+
+    background: #e7fff8;
+
+    color: #00a877;
+
+    padding: 8px 14px;
+
+    border-radius: 30px;
+
+    font-size: 14px;
+
+    margin-bottom: 15px;
+}
+
+.event-title{
+    font-size: 24px;
+
+    margin-bottom: 15px;
+}
+
+.event-location,
+.event-date,
+.event-price{
+    color: gray;
+
+    margin-bottom: 10px;
+
+    font-size: 15px;
+}
+
+.event-price{
+    color: #00a877;
+
+    font-weight: bold;
+
+    font-size: 18px;
+}
+
+/* =========================
+   EVENT ACTIONS
+========================= */
+
+.event-actions{
+    display: flex;
+
+    gap: 15px;
+
+    margin-top: 20px;
+}
+
+.edit-btn,
+.delete-btn{
+    flex: 1;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    transition: 0.3s;
+}
+
+.edit-btn{
+    background: #00a877;
+
+    color: white;
+}
+
+.edit-btn:hover{
+    background: #008f66;
+}
+
+.delete-btn{
+    background: crimson;
+
+    color: white;
+}
+
+.delete-btn:hover{
+    background: rgb(184, 11, 46);
+}
+
+
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+    .dashboard-nav{
+        flex-direction: column;
+
+        gap: 20px;
+    }
+
+    .welcome-section{
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .welcome-left h1{
+        font-size: 35px;
+    }
+
+    #eventsContainer{
+        grid-template-columns: 1fr;
+    }
+
+}

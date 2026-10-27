@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="./login.css">
+</head>
+
+<body>
+
+<section class="login">
+
+<div class="left-side">
+
+    <div class="back">
+
+        <div class="naira">
+
+            <img src="./project-pictures/hero (2).png" alt="" style="height: 60px;width: 100px;padding: 10px;">
+
+            <h2>nairabox</h2>
+
+        </div>
+
+<div class="back-home">
+
+    <a href="./project.html">
+
+        <h2>← Back</h2>
+
+    </a>
+
+</div>
+
+    </div>
+
+    <img src="./project-pictures/nairabox-images1.jpg" alt="">
+
+<div class="style">
+
+<div class="section3">
+
+    <h2>Sell Out Events On Nairabox !</h2>
+
+    <h3>Sign up to get access to :</h3>
+
+</div>
+
+<div class="overall">
+
+<div class="txt-img">
+
+<div class="left-img">
+
+<img src="./project-pictures/chart.svg" alt="" style="width: 50px;height: 50px;">
+
+</div>
+
+<div class="left-txt">
+    <p>Real Time sales Tracking</p>
+</div>
+
+</div>
+
+<div class="txt-img">
+
+<div class="left-img">
+
+<img src="./project-pictures/zap.svg" alt="" style="width: 50px;height: 50px;">
+
+</div>
+
+<div class="left-txt">
+    <p>Go live in minutes</p>
+</div>
+
+</div>
+
+<div class="txt-img">
+
+<div class="left-img">
+
+<img src="./project-pictures/ticket.svg" alt="" style="width: 50px;height: 50px;">
+
+</div>
+
+<div class="left-txt">
+    <p>Seamless checkout experience for attendees</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="right-side">
+
+    <!-- SIGN IN FORM -->
+    <div id="signinBox">
+
+        <h2>Sign In</h2>
+
+        <p>Welcome back, Enter your details to sign in.</p>
+
+        <form id="loginForm">
+
+            <p>Email*</p>
+
+            <input 
+                type="email" 
+                id="loginEmail" 
+                placeholder="Enter email address:"
+            >
+
+            <p>Password*</p>
+
+            <input 
+                type="password" 
+                id="loginPassword" 
+                placeholder="Enter Password:"
+            >
+
+            <div class="btn">
+                <button id="loginBtn">SIGN IN</button>
+            </div>
+
+        </form>
+
+        <p class="pbtn">
+            Dont have an account ?
+            <span id="showSignup" style="cursor:pointer;color:blue;">
+                Create account
+            </span>
+        </p>
+
+    </div>
+
+
+
+
+    <!-- SIGN UP FORM -->
+    <div id="signupBox" style="display: none;">
+
+        <h2>Create Account</h2>
+
+        <p>Enter your email to continue.</p>
+
+        <form id="signupForm">
+
+            <p>Email*</p>
+
+            <input 
+                type="email" 
+                id="signupEmail" 
+                placeholder="Enter email address:"
+            >
+
+            <p>Password*</p>
+
+            <input 
+                type="password" 
+                id="signupPassword" 
+                placeholder="Create Password:"
+            >
+
+            <div class="btn">
+                <button id="signupBtn">CONTINUE</button>
+            </div>
+
+        </form>
+
+        <p class="pbtn">
+            Already have an account ?
+            <span id="showLogin" style="cursor:pointer;color:blue;">
+                Login
+            </span>
+        </p>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- JAVASCRIPT -->
+<script type="module" src="./auth.js"></script>
+
+</body>
+</html>

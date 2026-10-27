@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="./dashboard.css">
+</head>
+
+<body>
+
+<nav class="dashboard-nav">
+
+    <div class="logo">
+        <h2>nairabox</h2>
+    </div>
+
+    <div class="nav-btns">
+
+        <button id="allEventsBtn">
+            All Events
+        </button>
+
+        <button id="logoutBtn">
+            Logout
+        </button>
+
+    </div>
+
+</nav>
+
+
+
+<section class="welcome-section">
+
+    <div class="welcome-left">
+
+        <h1 id="welcomeUser">
+            Welcome User
+        </h1>
+
+        <p>
+            Manage and track your events
+        </p>
+
+    </div>
+
+    <div class="welcome-right">
+
+        <a href="./createevent.html">
+
+            <button id="createEventBtn">
+                Create New Event
+            </button>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+
+<section class="events-section">
+
+    <div class="events-header">
+
+        <h2>
+            Latest Events
+        </h2>
+
+    </div>
+
+
+
+    <div id="eventsContainer">
+
+        <!-- EVENTS WILL APPEAR HERE -->
+
+    </div>
+
+</section>
+
+
+<script type="module" src="./dashboard.js"></script>
+
+</body>
+</html>
