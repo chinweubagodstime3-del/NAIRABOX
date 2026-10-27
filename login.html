@@ -1,196 +1,239 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+
+    <meta
+        name="description"
+        content="Sign in or create your Nairabox account to manage and sell event tickets."
+    >
+
+    <meta name="theme-color" content="#102b28">
+
+    <title>Sign In or Create Account | Nairabox</title>
+
     <link rel="stylesheet" href="./login.css">
 </head>
 
 <body>
 
-<section class="login">
+    <main class="login">
 
-<div class="left-side">
+        <!-- LEFT SIDE: BRANDING AND BENEFITS -->
+        <section class="left-side" aria-label="About Nairabox">
 
-    <div class="back">
+            <!-- Logo and home navigation -->
+            <header class="back">
 
-        <div class="naira">
+                <a href="./project.html" class="naira">
+                    <img
+                        src="./project-pictures/hero (2).png"
+                        alt="Nairabox logo"
+                    >
 
-            <img src="./project-pictures/hero (2).png" alt="" style="height: 60px;width: 100px;padding: 10px;">
+                    <span class="brand-name">nairabox</span>
+                </a>
 
-            <h2>nairabox</h2>
+                <div class="back-home">
+                    <a href="./project.html">
+                        &larr; Back to Home
+                    </a>
+                </div>
 
-        </div>
+            </header>
 
-<div class="back-home">
-
-    <a href="./project.html">
-
-        <h2>← Back</h2>
-
-    </a>
-
-</div>
-
-    </div>
-
-    <img src="./project-pictures/nairabox-images1.jpg" alt="">
-
-<div class="style">
-
-<div class="section3">
-
-    <h2>Sell Out Events On Nairabox !</h2>
-
-    <h3>Sign up to get access to :</h3>
-
-</div>
-
-<div class="overall">
-
-<div class="txt-img">
-
-<div class="left-img">
-
-<img src="./project-pictures/chart.svg" alt="" style="width: 50px;height: 50px;">
-
-</div>
-
-<div class="left-txt">
-    <p>Real Time sales Tracking</p>
-</div>
-
-</div>
-
-<div class="txt-img">
-
-<div class="left-img">
-
-<img src="./project-pictures/zap.svg" alt="" style="width: 50px;height: 50px;">
-
-</div>
-
-<div class="left-txt">
-    <p>Go live in minutes</p>
-</div>
-
-</div>
-
-<div class="txt-img">
-
-<div class="left-img">
-
-<img src="./project-pictures/ticket.svg" alt="" style="width: 50px;height: 50px;">
-
-</div>
-
-<div class="left-txt">
-    <p>Seamless checkout experience for attendees</p>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<div class="right-side">
-
-    <!-- SIGN IN FORM -->
-    <div id="signinBox">
-
-        <h2>Sign In</h2>
-
-        <p>Welcome back, Enter your details to sign in.</p>
-
-        <form id="loginForm">
-
-            <p>Email*</p>
-
-            <input 
-                type="email" 
-                id="loginEmail" 
-                placeholder="Enter email address:"
+            <!-- Main promotional image -->
+            <img
+                class="login-hero-image"
+                src="./project-pictures/nairabox-images1.jpg"
+                alt="Discover and manage events with Nairabox"
             >
 
-            <p>Password*</p>
+            <!-- Promotional content -->
+            <div class="style">
 
-            <input 
-                type="password" 
-                id="loginPassword" 
-                placeholder="Enter Password:"
-            >
+                <div class="section3">
+                    <h2>Sell Out Events on Nairabox!</h2>
 
-            <div class="btn">
-                <button id="loginBtn">SIGN IN</button>
+                    <p>Sign up to get access to:</p>
+                </div>
+
+                <div class="overall">
+
+                    <div class="txt-img">
+
+                        <div class="left-img">
+                            <img
+                                src="./project-pictures/chart.svg"
+                                alt=""
+                            >
+                        </div>
+
+                        <div class="left-txt">
+                            <p>Real-time sales tracking</p>
+                        </div>
+
+                    </div>
+
+                    <div class="txt-img">
+
+                        <div class="left-img">
+                            <img
+                                src="./project-pictures/zap.svg"
+                                alt=""
+                            >
+                        </div>
+
+                        <div class="left-txt">
+                            <p>Go live in minutes</p>
+                        </div>
+
+                    </div>
+
+                    <div class="txt-img">
+
+                        <div class="left-img">
+                            <img
+                                src="./project-pictures/ticket.svg"
+                                alt=""
+                            >
+                        </div>
+
+                        <div class="left-txt">
+                            <p>Seamless checkout for attendees</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
 
-        </form>
-
-        <p class="pbtn">
-            Dont have an account ?
-            <span id="showSignup" style="cursor:pointer;color:blue;">
-                Create account
-            </span>
-        </p>
-
-    </div>
+        </section>
 
 
+        <!-- RIGHT SIDE: AUTHENTICATION -->
+        <section class="right-side" aria-label="Account access">
 
+            <!-- SIGN IN -->
+            <div id="signinBox">
 
-    <!-- SIGN UP FORM -->
-    <div id="signupBox" style="display: none;">
+                <h1>Sign In</h1>
 
-        <h2>Create Account</h2>
+                <p>Welcome back! Enter your details to sign in.</p>
 
-        <p>Enter your email to continue.</p>
+                <form id="loginForm">
 
-        <form id="signupForm">
+                    <label for="loginEmail">Email address</label>
 
-            <p>Email*</p>
+                    <input
+                        type="email"
+                        id="loginEmail"
+                        name="email"
+                        placeholder="Enter your email address"
+                        autocomplete="email"
+                        required
+                    >
 
-            <input 
-                type="email" 
-                id="signupEmail" 
-                placeholder="Enter email address:"
-            >
+                    <label for="loginPassword">Password</label>
 
-            <p>Password*</p>
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        name="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required
+                    >
 
-            <input 
-                type="password" 
-                id="signupPassword" 
-                placeholder="Create Password:"
-            >
+                    <div class="btn">
+                        <button type="submit" id="loginBtn">
+                            SIGN IN
+                        </button>
+                    </div>
 
-            <div class="btn">
-                <button id="signupBtn">CONTINUE</button>
+                </form>
+
+                <p class="pbtn">
+                    Don't have an account?
+
+                    <button
+                        type="button"
+                        id="showSignup"
+                        class="text-btn"
+                        aria-controls="signupBox"
+                    >
+                        Create account
+                    </button>
+                </p>
+
             </div>
 
-        </form>
 
-        <p class="pbtn">
-            Already have an account ?
-            <span id="showLogin" style="cursor:pointer;color:blue;">
-                Login
-            </span>
-        </p>
+            <!-- CREATE ACCOUNT -->
+            <div id="signupBox" hidden>
 
-    </div>
+                <h1>Create Account</h1>
 
-</div>
+                <p>Enter your details to create your Nairabox account.</p>
 
-</section>
+                <form id="signupForm">
 
+                    <label for="signupEmail">Email address</label>
 
-<!-- JAVASCRIPT -->
-<script type="module" src="./auth.js"></script>
+                    <input
+                        type="email"
+                        id="signupEmail"
+                        name="email"
+                        placeholder="Enter your email address"
+                        autocomplete="email"
+                        required
+                    >
+
+                    <label for="signupPassword">Password</label>
+
+                    <input
+                        type="password"
+                        id="signupPassword"
+                        name="password"
+                        placeholder="Create a password"
+                        autocomplete="new-password"
+                        minlength="6"
+                        required
+                    >
+
+                    <div class="btn">
+                        <button type="submit" id="signupBtn">
+                            CREATE ACCOUNT
+                        </button>
+                    </div>
+
+                </form>
+
+                <p class="pbtn">
+                    Already have an account?
+
+                    <button
+                        type="button"
+                        id="showLogin"
+                        class="text-btn"
+                        aria-controls="signinBox"
+                    >
+                        Sign in
+                    </button>
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Firebase authentication -->
+    <script type="module" src="./auth.js"></script>
 
 </body>
 </html>
+```

@@ -1,211 +1,176 @@
-// FIREBASE IMPORTS
+
 import { auth } from "./firebase.js";
 
 import {
-
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword
-
 } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
 
-
-
-
 // ============================
-// GET ELEMENTS
+// GET HTML ELEMENTS
 // ============================
 
-// BOXES
 const signinBox = document.getElementById("signinBox");
-
 const signupBox = document.getElementById("signupBox");
 
-
-// SWITCH TEXTS
 const showSignup = document.getElementById("showSignup");
-
 const showLogin = document.getElementById("showLogin");
 
-
-
-
-// LOGIN ELEMENTS
 const loginForm = document.getElementById("loginForm");
-
 const loginEmail = document.getElementById("loginEmail");
-
 const loginPassword = document.getElementById("loginPassword");
-
 const loginBtn = document.getElementById("loginBtn");
 
-
-
-
-// SIGNUP ELEMENTS
 const signupForm = document.getElementById("signupForm");
-
 const signupEmail = document.getElementById("signupEmail");
-
 const signupPassword = document.getElementById("signupPassword");
-
 const signupBtn = document.getElementById("signupBtn");
 
-
-
-
 // ============================
-// SHOW SIGNUP
+// SWITCH TO CREATE ACCOUNT
 // ============================
+
 showSignup.addEventListener("click", () => {
-
-    signinBox.style.display = "none";
-
-    signupBox.style.display = "block";
-
+    signinBox.hidden = true;
+    signupBox.hidden = false;
 });
 
-
-
-
 // ============================
-// SHOW LOGIN
+// SWITCH TO SIGN IN
 // ============================
+
 showLogin.addEventListener("click", () => {
-
-    signupBox.style.display = "none";
-
-    signinBox.style.display = "block";
-
+    signupBox.hidden = true;
+    signinBox.hidden = false;
 });
-
-
-
 
 // ============================
 // LOGIN USER
 // ============================
-loginForm.addEventListener("submit", (e) => {
 
-    e.preventDefault();
+loginForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
     const email = loginEmail.value.trim();
+    const password = loginPassword.value;
 
-    const password = loginPassword.value.trim();
-
-
-
-    if(email === "" || password === ""){
-
-        alert("Please fill all fields");
-
+    if (!email || !password) {
+        alert("Please fill in all fields.");
         return;
     }
 
+    loginBtn.disabled = true;
+    loginBtn.textContent = "Signing In...";
 
+    try {
+        const userCredential = await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
 
-    loginBtn.innerHTML = "Signing In...";
+        console.log(
+            "Login successful:",
+            userCredential.user.email
+        );
 
+        // Wait until Firebase confirms the authentication state.
+        await auth.authStateReady();
 
+        if (auth.currentUser) {
+            window.location.href = "./dashboard.html";
+        } else {
+            alert(
+                "Your login session could not be confirmed. Please try signing in again."
+            );
+        }
 
-    signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-    )
+    } catch (error) {
+        console.error("Login error:", error);
 
-    .then((userCredential) => {
+        if (
+            error.code === "auth/invalid-credential" ||
+            error.code === "auth/wrong-password" ||
+            error.code === "auth/user-not-found"
+        ) {
+            alert("Incorrect email or password. Please try again.");
 
-        alert("Login Successful");
+        } else if (error.code === "auth/invalid-email") {
+            alert("Please enter a valid email address.");
 
-        console.log(userCredential.user);
+        } else if (error.code === "auth/too-many-requests") {
+            alert("Too many attempts. Please wait a while and try again.");
 
-        window.location.href = "./dashboard.html";
+        } else {
+            alert("Login failed: " + error.message);
+        }
 
-    })
-
-    .catch((error) => {
-
-        alert(error.message);
-
-    })
-
-    .finally(() => {
-
-        loginBtn.innerHTML = "SIGN IN";
-
-    });
-
+    } finally {
+        loginBtn.disabled = false;
+        loginBtn.textContent = "SIGN IN";
+    }
 });
 
-
-
-
 // ============================
-// CREATE ACCOUNT
+// CREATE NEW ACCOUNT
 // ============================
-signupForm.addEventListener("submit", (e) => {
 
-    e.preventDefault();
+signupForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
     const email = signupEmail.value.trim();
+    const password = signupPassword.value;
 
-    const password = signupPassword.value.trim();
-
-
-
-
-    if(email === "" || password === ""){
-
-        alert("Please fill all fields");
-
+    if (!email || !password) {
+        alert("Please fill in all fields.");
         return;
     }
 
+    if (password.length < 6) {
+        alert("Your password must contain at least 6 characters.");
+        return;
+    }
 
+    signupBtn.disabled = true;
+    signupBtn.textContent = "Creating Account...";
 
+    try {
+        await createUserWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
 
-    signupBtn.innerHTML = "Creating...";
+        alert("Account created successfully! You can now sign in.");
 
+        // Return to the sign-in form.
+        signupBox.hidden = true;
+        signinBox.hidden = false;
 
+        // Fill in the email for convenience.
+        loginEmail.value = email;
+        loginPassword.value = "";
 
-    createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-    )
+        signupForm.reset();
 
-    .then((userCredential) => {
+    } catch (error) {
+        console.error("Signup error:", error);
 
-        alert("Account Created Successfully");
+        if (error.code === "auth/email-already-in-use") {
+            alert("This email already has an account. Please sign in.");
 
-        console.log(userCredential.user);
+        } else if (error.code === "auth/invalid-email") {
+            alert("Please enter a valid email address.");
 
+        } else if (error.code === "auth/weak-password") {
+            alert("Please choose a stronger password with at least 6 characters.");
 
+        } else {
+            alert("Account creation failed: " + error.message);
+        }
 
-        // SWITCH BACK TO LOGIN
-        signupBox.style.display = "none";
-
-        signinBox.style.display = "block";
-
-
-
-        // CLEAR INPUTS
-        signupEmail.value = "";
-
-        signupPassword.value = "";
-
-    })
-
-    .catch((error) => {
-
-        alert(error.message);
-
-    })
-
-    .finally(() => {
-
-        signupBtn.innerHTML = "CONTINUE";
-
-    });
-
+    } finally {
+        signupBtn.disabled = false;
+        signupBtn.textContent = "CREATE ACCOUNT";
+    }
 });
