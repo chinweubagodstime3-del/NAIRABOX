@@ -7,7 +7,15 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+    --primary: #16c79a;
+    --primary-dark: #0eaa81;
+    --text-dark: #17202a;
+    --text-muted: #69747c;
+    --border: #e4eae8;
+    --footer-bg: #0b1118;
 }
 
 html {
@@ -15,16 +23,23 @@ html {
 }
 
 body {
-    width: 100%;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
     background: #ffffff;
-    color: #17202a;
+    color: var(--text-dark);
+    overflow-x: hidden;
 }
 
 a {
+    color: inherit;
     text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
 }
 
 button,
@@ -36,75 +51,85 @@ button {
     cursor: pointer;
 }
 
+main {
+    flex: 1;
+    width: 100%;
+}
 
 /* =========================
-   NAVIGATION BAR
+   NAVIGATION
 ========================= */
 
-nav {
+.site-header {
+    position: relative;
+    z-index: 5;
     width: 100%;
-    min-height: 82px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 25px;
-    padding: 15px 5%;
     background: #080b10;
     color: #ffffff;
 }
 
-nav h2 {
-    font-size: 30px;
-    font-weight: 800;
-    color: #16c79a;
-    letter-spacing: -1px;
-    flex-shrink: 0;
-}
-
-nav ul {
+.navbar {
+    width: min(1200px, 100%);
+    min-height: 82px;
+    margin: 0 auto;
+    padding: 16px 28px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 35px;
-    flex: 1;
-    list-style: none;
+    gap: 30px;
 }
 
-nav .nav1,
-nav .nav2 {
+.brand {
+    flex-shrink: 0;
+    color: var(--primary);
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.nav1,
+.nav2 {
     display: flex;
     align-items: center;
     gap: 28px;
 }
 
-nav li a {
+.nav-link,
+.login-link {
     color: #ffffff;
     font-size: 15px;
-    transition: color 0.3s ease;
+    transition: color 0.25s ease;
 }
 
-nav li a:hover {
-    color: #16c79a;
+.nav-link:hover,
+.nav-link.active,
+.login-link:hover {
+    color: var(--primary);
 }
 
-nav .nav2 button {
-    padding: 12px 22px;
-    border: none;
+.nav2 {
+    flex-shrink: 0;
+}
+
+.create-event-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 11px 20px;
     border-radius: 8px;
-    background: #16c79a;
-    transition: background 0.3s ease;
-}
-
-nav .nav2 button:hover {
-    background: #0eaa81;
-}
-
-nav .nav2 button a {
+    background: var(--primary);
     color: #07130f;
+    font-size: 14px;
     font-weight: 700;
-    display: block;
+    white-space: nowrap;
+    transition: background 0.25s ease, transform 0.25s ease;
 }
 
+.create-event-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+}
 
 /* =========================
    HERO SECTION
@@ -119,11 +144,10 @@ nav .nav2 button a {
 .hero-image {
     display: block;
     width: 100%;
-    height: 500px;
+    height: clamp(260px, 40vw, 500px);
     object-fit: cover;
     object-position: center;
 }
-
 
 /* =========================
    SEARCH SECTION
@@ -131,73 +155,105 @@ nav .nav2 button a {
 
 .search-section {
     width: 100%;
-    padding: 35px 5%;
+    padding: 35px 24px;
     background: #ffffff;
 }
 
-#searchInput {
-    display: block;
-    width: 100%;
-    max-width: 900px;
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: min(900px, 100%);
+    min-height: 58px;
     margin: 0 auto;
-    padding: 17px 20px;
+    padding: 0 18px;
     border: 1px solid #dce3e1;
-    border-radius: 10px;
-    outline: none;
+    border-radius: 12px;
     background: #f9fbfa;
-    color: #17202a;
-    font-size: 16px;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-#searchInput:focus {
-    border-color: #16c79a;
+.search-wrapper:focus-within {
+    border-color: var(--primary);
     box-shadow: 0 0 0 3px rgba(22, 199, 154, 0.12);
+}
+
+.search-icon {
+    color: #69747c;
+    font-size: 28px;
+    line-height: 1;
+}
+
+#searchInput {
+    width: 100%;
+    min-width: 0;
+    padding: 16px 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--text-dark);
+    font-size: 16px;
 }
 
 #searchInput::placeholder {
     color: #858d91;
-    font-weight: 400;
 }
-
 
 /* =========================
    EVENTS SECTION
 ========================= */
 
 .events-section {
-    width: 100%;
-    padding: 20px 5% 80px;
+    width: min(1200px, 100%);
+    margin: 0 auto;
+    padding: 20px 28px 85px;
 }
 
 .events-header {
     margin-bottom: 30px;
 }
 
-.events-header h1 {
-    font-size: 36px;
-    font-weight: 800;
-    color: #101820;
+.section-label {
+    display: inline-block;
     margin-bottom: 10px;
+    color: #07855f;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.events-header h1 {
+    margin-bottom: 10px;
+    color: #101820;
+    font-size: clamp(28px, 3.5vw, 38px);
+    line-height: 1.2;
+    font-weight: 800;
 }
 
 .events-header p {
-    color: #69747c;
+    color: var(--text-muted);
     font-size: 16px;
+    line-height: 1.7;
 }
 
-
 /* =========================
-   EVENTS GRID
+   FIREBASE EVENTS GRID
 ========================= */
 
 #eventsContainer {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 25px;
     align-items: stretch;
+    gap: 26px;
 }
 
+#eventsContainer > p {
+    grid-column: 1 / -1;
+    padding: 25px 0;
+    color: var(--text-muted);
+    font-size: 16px;
+    line-height: 1.7;
+}
 
 /* =========================
    EVENT CARDS
@@ -206,12 +262,12 @@ nav .nav2 button a {
 .event-card {
     min-width: 0;
     overflow: hidden;
-    background: #ffffff;
     border: 1px solid #e9eeec;
     border-radius: 14px;
-    cursor: pointer;
+    background: #ffffff;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .event-card:hover {
@@ -224,6 +280,7 @@ nav .nav2 button a {
     width: 100%;
     height: 230px;
     object-fit: cover;
+    background: #f1f5f4;
 }
 
 .event-content {
@@ -232,18 +289,20 @@ nav .nav2 button a {
 
 .event-category {
     display: inline-block;
-    padding: 7px 13px;
-    margin-bottom: 14px;
+    max-width: 100%;
+    margin-bottom: 13px;
+    padding: 7px 12px;
     border-radius: 30px;
     background: #e4fbf3;
     color: #07855f;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
+    overflow-wrap: anywhere;
 }
 
 .event-title {
     margin-bottom: 13px;
-    color: #17202a;
+    color: var(--text-dark);
     font-size: 21px;
     line-height: 1.4;
     overflow-wrap: anywhere;
@@ -252,9 +311,10 @@ nav .nav2 button a {
 .event-location,
 .event-date {
     margin-bottom: 10px;
-    color: #69747c;
+    color: var(--text-muted);
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
 }
 
 .event-price {
@@ -262,20 +322,8 @@ nav .nav2 button a {
     color: #07966e;
     font-size: 20px;
     font-weight: 800;
+    overflow-wrap: anywhere;
 }
-
-
-/* =========================
-   EMPTY / LOADING STATES
-========================= */
-
-#eventsContainer > p {
-    grid-column: 1 / -1;
-    padding: 25px 0;
-    color: #69747c;
-    font-size: 16px;
-}
-
 
 /* =========================
    FOOTER
@@ -284,48 +332,55 @@ nav .nav2 button a {
 .footer {
     width: 100%;
     margin-top: auto;
-    padding: 50px 5% 25px;
-    background: #0b1118;
+    padding: 50px 28px 24px;
+    background: var(--footer-bg);
     color: #ffffff;
 }
 
-.footer .top {
-    display: grid;
-    grid-template-columns: 1fr 0.6fr 1.4fr;
-    gap: 45px;
-    align-items: start;
+.footer-top,
+.footer-bottom {
+    width: min(1200px, 100%);
+    margin-right: auto;
+    margin-left: auto;
 }
 
-.footer .left,
-.footer .middle,
-.footer .right {
+.footer-top {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr) minmax(0, 1.4fr);
+    align-items: start;
+    gap: 40px;
+}
+
+.footer-brand,
+.footer-support,
+.newsletter {
     min-width: 0;
 }
 
 .img-logo {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    justify-content: flex-start;
     gap: 12px;
 }
 
-.footer .img-logo img {
+.img-logo img {
     width: 50px;
     height: 50px;
     object-fit: contain;
     border-radius: 8px;
 }
 
-.img-logo h2 {
-    color: #16c79a;
+.img-logo span {
+    color: var(--primary);
     font-size: 27px;
+    font-weight: 800;
 }
 
-.footer h3,
-.footer h4 {
-    margin-bottom: 15px;
+.footer h3 {
+    margin-bottom: 14px;
     color: #ffffff;
-    font-size: 19px;
+    font-size: 18px;
+    line-height: 1.4;
 }
 
 .footer p {
@@ -335,18 +390,37 @@ nav .nav2 button a {
     line-height: 1.8;
 }
 
-.footer .email-btn {
+.footer-support a {
+    display: block;
+    width: fit-content;
+    margin-top: 12px;
+    color: #a9b2bb;
+    font-size: 14px;
+    transition: color 0.25s ease;
+}
+
+.footer-support a:hover {
+    color: var(--primary);
+}
+
+/* =========================
+   NEWSLETTER FORM
+========================= */
+
+.email-btn {
     display: flex;
-    align-items: center;
+    align-items: stretch;
     gap: 10px;
+    width: 100%;
     margin-top: 20px;
 }
 
-.footer .email-btn input {
+.email-btn input {
+    flex: 1;
     width: 100%;
     min-width: 0;
-    padding: 13px 14px;
-    margin: 0;
+    min-height: 48px;
+    padding: 12px 14px;
     border: 1px solid #35414d;
     border-radius: 7px;
     outline: none;
@@ -354,35 +428,41 @@ nav .nav2 button a {
     color: #ffffff;
 }
 
-.footer .email-btn input:focus {
-    border-color: #16c79a;
+.email-btn input:focus {
+    border-color: var(--primary);
 }
 
-.footer .email-btn input::placeholder {
+.email-btn input::placeholder {
     color: #a9b2bb;
 }
 
-.footer .email-btn button {
+.email-btn button {
     flex-shrink: 0;
-    padding: 13px 18px;
+    min-height: 48px;
+    padding: 12px 18px;
     border: none;
     border-radius: 7px;
-    background: #16c79a;
+    background: var(--primary);
     color: #07130f;
+    font-size: 14px;
     font-weight: 700;
-    transition: background 0.3s ease;
+    transition: background 0.25s ease;
 }
 
-.footer .email-btn button:hover {
-    background: #0eaa81;
+.email-btn button:hover {
+    background: var(--primary-dark);
 }
 
+.newsletter-message {
+    color: #8ce7cd !important;
+    font-size: 13px !important;
+}
 
 /* =========================
    FOOTER BOTTOM
 ========================= */
 
-.footer .bottom {
+.footer-bottom {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -392,118 +472,139 @@ nav .nav2 button a {
     border-top: 1px solid #303a44;
 }
 
-.footer .bottom p {
-    margin: 0;
+.footer-bottom p {
+    margin-top: 0;
 }
 
-.footer .bottom a {
+.footer-bottom a {
     color: #a9b2bb;
     font-size: 14px;
-    transition: color 0.3s ease;
+    transition: color 0.25s ease;
 }
 
-.footer .bottom a:hover {
-    color: #16c79a;
+.footer-bottom a:hover {
+    color: var(--primary);
 }
-
 
 /* =========================
-   TABLET RESPONSIVENESS
+   TABLETS AND SMALL LAPTOPS
 ========================= */
 
 @media (max-width: 1000px) {
-    nav {
-        padding: 15px 4%;
-        gap: 20px;
+    .navbar {
+        gap: 22px;
+        padding-right: 24px;
+        padding-left: 24px;
     }
 
-    nav ul {
-        gap: 20px;
-    }
-
-    nav .nav1,
-    nav .nav2 {
+    .nav1,
+    .nav2 {
         gap: 18px;
     }
 
     #eventsContainer {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
     }
 
-    .footer .top {
-        grid-template-columns: 1fr 1fr;
+    .footer-top {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 35px;
     }
 
-    .footer .right {
+    .newsletter {
         grid-column: 1 / -1;
+        max-width: 650px;
     }
 }
 
-
 /* =========================
-   MOBILE RESPONSIVENESS
+   MOBILE PHONES
 ========================= */
 
 @media (max-width: 650px) {
-    nav {
+    .navbar {
+        min-height: auto;
         flex-wrap: wrap;
         justify-content: space-between;
-        padding: 18px 5%;
+        gap: 15px;
+        padding: 18px 20px;
     }
 
-    nav h2 {
+    .brand {
         font-size: 26px;
     }
 
-    nav ul {
+    .nav1 {
+        order: 3;
         width: 100%;
-        flex: auto;
-        flex-wrap: wrap;
-        gap: 18px;
+        justify-content: center;
+        gap: 28px;
+        padding-top: 13px;
+        border-top: 1px solid #303030;
     }
 
-    nav .nav1,
-    nav .nav2 {
-        gap: 15px;
+    .nav2 {
+        gap: 13px;
     }
 
-    nav li a {
+    .nav-link,
+    .login-link {
         font-size: 14px;
     }
 
-    nav .nav2 button {
-        padding: 10px 13px;
+    .create-event-btn {
+        min-height: 40px;
+        padding: 9px 12px;
+        font-size: 12px;
     }
 
     .hero-image {
-        height: 280px;
+        height: clamp(210px, 55vw, 320px);
+        object-position: center;
     }
 
     .search-section {
-        padding: 25px 5%;
+        padding: 25px 20px;
+    }
+
+    .search-wrapper {
+        min-height: 52px;
+        padding: 0 14px;
     }
 
     #searchInput {
-        padding: 15px;
+        padding: 14px 0;
         font-size: 15px;
     }
 
     .events-section {
-        padding: 15px 5% 50px;
+        padding: 15px 20px 55px;
+    }
+
+    .events-header {
+        margin-bottom: 24px;
     }
 
     .events-header h1 {
         font-size: 29px;
     }
 
+    .events-header p {
+        font-size: 14px;
+    }
+
     #eventsContainer {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 22px;
     }
 
     .event-image {
-        height: 220px;
+        height: clamp(200px, 58vw, 300px);
+    }
+
+    .event-content {
+        padding: 18px;
     }
 
     .event-title {
@@ -511,27 +612,20 @@ nav .nav2 button a {
     }
 
     .footer {
-        padding: 40px 5% 20px;
+        padding: 40px 20px 22px;
     }
 
-    .footer .top {
-        grid-template-columns: 1fr;
+    .footer-top {
+        grid-template-columns: minmax(0, 1fr);
         gap: 30px;
     }
 
-    .footer .right {
+    .newsletter {
         grid-column: auto;
+        width: 100%;
     }
 
-    .footer .email-btn {
-        align-items: stretch;
-    }
-
-    .footer .email-btn button {
-        padding: 12px;
-    }
-
-    .footer .bottom {
+    .footer-bottom {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
@@ -539,19 +633,38 @@ nav .nav2 button a {
     }
 }
 
-
 /* =========================
-   SMALL MOBILE SCREENS
+   EXTRA SMALL PHONES
 ========================= */
 
 @media (max-width: 380px) {
-    nav ul {
-        align-items: flex-start;
+    .navbar {
+        padding-right: 14px;
+        padding-left: 14px;
     }
 
-    nav .nav1,
-    nav .nav2 {
-        flex-wrap: wrap;
+    .brand {
+        font-size: 23px;
+    }
+
+    .nav2 {
+        gap: 9px;
+    }
+
+    .create-event-btn {
+        padding: 8px 10px;
+        font-size: 11px;
+    }
+
+    .nav1 {
+        gap: 20px;
+    }
+
+    .search-section,
+    .events-section,
+    .footer {
+        padding-right: 14px;
+        padding-left: 14px;
     }
 
     .footer .email-btn {
@@ -560,5 +673,27 @@ nav .nav2 button a {
 
     .footer .email-btn button {
         width: 100%;
+    }
+
+    .event-content {
+        padding: 15px;
+    }
+}
+
+/* =========================
+   REDUCED MOTION ACCESSIBILITY
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
     }
 }

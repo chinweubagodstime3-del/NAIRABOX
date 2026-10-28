@@ -1,235 +1,117 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Nairabox HomePage</title>
-
+    <meta name="description" content="Discover upcoming events and get your tickets with Nairabox.">
+    <title>Nairabox | Discover Events</title>
     <link rel="stylesheet" href="./project.css">
-
 </head>
 
 <body>
-
-
-
-
-<!-- NAVBAR -->
-<nav>
-
-    <h2>nairabox</h2>
-
-    <ul>
-
-        <div class="nav1">
-
-            <li>
-                <a href="./project.html">
-                    Home
-                </a>
-            </li>
-
-            <li>
-                <a href="./about.html">
-                    About us
-                </a>
-            </li>
-
-        </div>
-
-
-
-
-        <div class="nav2">
-
-            <li>
-                <a href="./login.html">
-                    Log In
-                </a>
-            </li>
-
-            <button>
-
-                <a href="./login.html">
-                    Create Events
-                </a>
-
-            </button>
-
-        </div>
-
-    </ul>
-
-</nav>
-
-
-
-
-
-<!-- HERO SECTION -->
-<section class="hero-section">
-
-    <img 
-        src="./project-pictures/hero (1).png" 
-        alt=""
-        class="hero-image"
-    >
-
-</section>
-
-
-
-
-
-<!-- SEARCH SECTION -->
-<section class="search-section">
-
-    <input 
-        type="text"
-        id="searchInput"
-        placeholder="Search By Event Name"
-    >
-
-</section>
-
-
-
-
-
-<!-- EVENTS SECTION -->
-<section class="events-section">
-
-    <div class="events-header">
-
-        <h1>
-            Upcoming Events
-        </h1>
-
-    </div>
-
-
-
-
-    <!-- DYNAMIC EVENTS -->
-    <div id="eventsContainer">
-
-        <!-- EVENTS FROM FIRESTORE -->
-
-    </div>
-
-</section>
-
-
-
-
-
-
-<!-- FOOTER -->
-<footer class="footer">
-
-    <div class="top">
-
-
-
-
-        <div class="left">
-
-            <div class="img-logo">
-
-                <img 
-                    src="./project-pictures/hero (2).png" 
-                    alt="" 
-                    style="width: 50px;height: 50px;"
-                >
-
-                <h2>nairabox</h2>
-
+    <header class="site-header">
+        <nav class="navbar" aria-label="Main navigation">
+            <a href="./project.html" class="brand">nairabox</a>
+
+            <div class="nav1">
+                <a href="./project.html" class="nav-link active">Home</a>
+                <a href="./about.html" class="nav-link">About us</a>
             </div>
 
-            <p>
-                Grab your exclusive tickets right here
-            </p>
+            <div class="nav2">
+                <a href="./login.html" class="login-link">Log In</a>
+                <a href="./login.html" class="create-event-btn">Create Events</a>
+            </div>
+        </nav>
+    </header>
 
-        </div>
+    <main>
+        <section class="hero-section" aria-label="Discover Nairabox events">
+            <img
+                src="./project-pictures/hero (1).png"
+                alt="Discover events with Nairabox"
+                class="hero-image"
+            >
+        </section>
 
-
-
-
-
-        <div class="middle">
-
-            <h4>
-                Support
-            </h4>
-
-        </div>
-
-
-
-
-
-        <div class="right">
-
-            <h3>
-                Sign up for our newsletter
-            </h3>
-
-            <p>
-                Be the first to know about upcoming events,
-                exclusive deals and insider updates
-            </p>
-
-
-
-
-            <div class="email-btn">
-
-                <input 
-                    type="email"
-                    placeholder="Enter your email"
+        <section class="search-section" aria-label="Search events">
+            <div class="search-wrapper">
+                <span class="search-icon" aria-hidden="true">⌕</span>
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Search by event name..."
+                    aria-label="Search by event name"
                 >
+            </div>
+        </section>
 
-                <button>
-                    Subscribe
-                </button>
-
+        <section class="events-section">
+            <div class="events-header">
+                <div>
+                    <span class="section-label">FIND YOUR NEXT EXPERIENCE</span>
+                    <h1>Upcoming Events</h1>
+                    <p>Discover events and find your next experience.</p>
+                </div>
             </div>
 
+            <!-- Keep this ID for Firebase events and search in project.js -->
+            <div id="eventsContainer" aria-live="polite">
+                <!-- Events are loaded from Firebase by project.js -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <a href="./project.html" class="img-logo">
+                    <img
+                        src="./project-pictures/hero (2).png"
+                        alt="Nairabox logo"
+                    >
+                    <span>nairabox</span>
+                </a>
+                <p>Grab your exclusive tickets right here.</p>
+            </div>
+
+            <div class="footer-support">
+                <h3>Support</h3>
+                <p>Need help? Contact us for assistance.</p>
+                <a href="./about.html">About Nairabox</a>
+                <a href="./login.html">Log in / Create events</a>
+            </div>
+
+            <div class="newsletter">
+                <h3>Sign up for our newsletter</h3>
+                <p>
+                    Be the first to know about upcoming events,
+                    exclusive deals and insider updates.
+                </p>
+
+                <form class="email-btn" id="newsletterForm">
+                    <input
+                        type="email"
+                        id="newsletterEmail"
+                        placeholder="Enter your email"
+                        aria-label="Email address for newsletter"
+                        required
+                    >
+                    <button type="submit">Subscribe</button>
+                </form>
+
+                <p id="newsletterMessage" class="newsletter-message" aria-live="polite"></p>
+            </div>
         </div>
 
-    </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Nairabox. All rights reserved.</p>
+            <a href="#" class="privacy-link">Privacy Policy</a>
+        </div>
+    </footer>
 
-
-
-
-
-    <div class="bottom">
-
-        <p>
-            © 2025 Nairabox. All rights reserved.
-        </p>
-
-        <a href="#">
-            Privacy Policy
-        </a>
-
-    </div>
-
-</footer>
-
-
-
-
-
-<!-- JAVASCRIPT -->
-<script type="module" src="./project.js"></script>
-
+    <!-- Keep your existing Firebase and search JavaScript -->
+    <script type="module" src="./project.js"></script>
 </body>
 </html>
-
-
-
